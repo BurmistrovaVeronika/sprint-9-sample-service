@@ -6,3 +6,15 @@ YandexInternalRootCA.crt
 
 __pycache__/
 .mypy_cache
+sample/key.json
+
+.venv/
+__pycache__/
+*.pyc
+
+service_stg/key.json
+*.json
+
+kafka_2.13-3.7.0/
+kafka_2.13-3.7.0.tgz
+kafka.properties

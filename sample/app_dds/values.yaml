@@ -1,7 +1,7 @@
 image:
   repository: cr.yandex/crprlnbqn4o5dpo58hd8/dds_service
   pullPolicy: IfNotPresent
-  tag: "v2026-07-20-r1"
+  tag: "v2026-07-20-r21"
 
 replicaCount: 1
 
@@ -11,7 +11,7 @@ config:
   KAFKA_PORT: "9091"
   KAFKA_CONSUMER_USERNAME: "producer_consumer"
   KAFKA_CONSUMER_PASSWORD: "TOPAZ540"
-  KAFKA_CONSUMER_GROUP: "main-consumer-group"
+  KAFKA_CONSUMER_GROUP: "dds-consumer-group"
   KAFKA_SOURCE_TOPIC: "order-service_orders"
   KAFKA_DESTINATION_TOPIC: "stg-service-orders"
 
@@ -29,3 +29,11 @@ config:
 
 imagePullSecrets:
   - name: yandex-registry
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "200m"
+    memory: "256Mi"

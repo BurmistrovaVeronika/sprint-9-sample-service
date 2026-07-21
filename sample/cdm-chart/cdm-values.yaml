@@ -1,0 +1,6 @@
+image:
+  repository: cr.yandex/crprlnbqn4o5dpo58hd8/cdm_service
+  pullPolicy: Always
+  tag: "v2026-07-21-r2"
+
+replicaCount: 1

@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cdm-service
+  namespace: st-k8s260709e72fe3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cdm-service
+  template:
+    metadata:
+      labels:
+        app: cdm-service
+    spec:
+      imagePullSecrets:
+        - name: yandex-registry
+      containers:
+        - name: cdm-service
+          image: "cr.yandex/crprlnbqn4o5dpo58hd8/cdm_service:v2026-07-21-r2"
+          imagePullPolicy: Always
+          env:
+            - name: KAFKA_HOST
+              value: "rc1a-p27s7l68dghcf6i0.mdb.yandexcloud.net"
+
+            - name: KAFKA_PORT
+              value: "9091"
+
+            - name: KAFKA_CONSUMER_USERNAME
+              value: "producer_consumer"
+
+            - name: KAFKA_CONSUMER_PASSWORD
+              value: "TOPAZ540"
+
+            - name: KAFKA_CONSUMER_GROUP
+              value: "cdm-consumer-group-v2"
+
+            - name: KAFKA_SOURCE_TOPIC
+              value: "dds-service-orders"
+
+            - name: PG_WAREHOUSE_HOST
+              value: "rc1b-4u7d1q84rb05820d.mdb.yandexcloud.net"
+
+            - name: PG_WAREHOUSE_PORT
+              value: "6432"
+
+            - name: PG_WAREHOUSE_DBNAME
+              value: "sprint9dwh"
+
+            - name: PG_WAREHOUSE_USER
+              value: "db_user"
+
+            - name: PG_WAREHOUSE_PASSWORD
+              value: "TOPPOTZ90"
